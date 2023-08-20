@@ -20,10 +20,10 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-const nextSlide = () => {
-  const nextIndex = (currentSlide + 1) % 3; // There are 3 slides
-  setCurrentSlide(nextIndex);
-}
+  const nextSlide = () => {
+    const nextIndex = (currentSlide + 1) % 3; // There are 3 slides
+    setCurrentSlide(nextIndex);
+  };
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
@@ -50,7 +50,7 @@ const nextSlide = () => {
     }
   );
 
- const productData: ProductType[] = [
+  const productData: ProductType[] = [
     {
       api: "New User",
       imgLink:
@@ -128,45 +128,41 @@ const nextSlide = () => {
   if (!suggestProductData) {
     return (
       <div>
+        <div className="h-fit bg-[#f2f2f2]">
+          <MainNav></MainNav>
 
-      <div className="h-fit bg-[#f2f2f2]">
-  <MainNav></MainNav>
+          <div id="default-carousel" className="w-full" data-carousel="slide">
+            <div className="rounded-lg">
+              <div
+                className={`duration-700 ease-in-out ${
+                  currentSlide === 0 ? "" : "hidden"
+                }`}
+                data-carousel-item
+              >
+                <Banner />
+              </div>
+              <div
+                className={`duration-700 ease-in-out ${
+                  currentSlide === 1 ? "" : "hidden"
+                }`}
+                data-carousel-item
+              >
+                <Banner2 />
+              </div>
+              <div
+                className={`duration-700 ease-in-out ${
+                  currentSlide === 2 ? "" : "hidden"
+                }`}
+                data-carousel-item
+              >
+                <Banner3 />
+              </div>
+            </div>
 
-  <div id="default-carousel" className="w-full" data-carousel="slide">
-    <div className="rounded-lg">
-      <div
-        className={`duration-700 ease-in-out ${
-          currentSlide === 0 ? "" : "hidden"
-        }`}
-        data-carousel-item
-      >
-        <Banner />
-      </div>
-      <div
-        className={`duration-700 ease-in-out ${
-          currentSlide === 1 ? "" : "hidden"
-        }`}
-        data-carousel-item
-      >
-        <Banner2 />
-      </div>
-      <div
-        className={`duration-700 ease-in-out ${
-          currentSlide === 2 ? "" : "hidden"
-        }`}
-        data-carousel-item
-      >
-        <Banner3/>
-      </div>
-    </div>
-    
-    <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-      
-    </div>
-  </div>
-</div>
+            <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"></div>
+          </div>
+        </div>
 
-        
         <div className="flex flex-row">
           <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
             {productData.map((product) => {
@@ -179,15 +175,47 @@ const nextSlide = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     );
   }
 
   return (
-    <div className="h-fit bg-[#f2f2f2]">
-      <MainNav></MainNav>
-      <Banner></Banner>
-      
+    <div>
+      <div className="h-fit bg-[#f2f2f2]">
+        <MainNav></MainNav>
+
+        <div id="default-carousel" className="w-full" data-carousel="slide">
+          <div className="rounded-lg">
+            <div
+              className={`duration-700 ease-in-out ${
+                currentSlide === 0 ? "" : "hidden"
+              }`}
+              data-carousel-item
+            >
+              <Banner />
+            </div>
+            <div
+              className={`duration-700 ease-in-out ${
+                currentSlide === 1 ? "" : "hidden"
+              }`}
+              data-carousel-item
+            >
+              <Banner2 />
+            </div>
+            <div
+              className={`duration-700 ease-in-out ${
+                currentSlide === 2 ? "" : "hidden"
+              }`}
+              data-carousel-item
+            >
+              <Banner3 />
+            </div>
+          </div>
+
+          <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"></div>
+        </div>
+      </div>
+
       <div className="flex flex-row">
         <div className=" flex flex-row justify-between flex-wrap	mt-7 max-w-[63vw] ml-5">
           {productData.map((product) => {

@@ -8,12 +8,14 @@ import SuggestedCard from "../Components/SuggestedCard";
 import { useEffect, useState } from "react";
 import { ProductType } from "@/utils/types";
 import axios from "axios";
+import Loading from "../Components/Loading";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Cart() {
   const [cart, setCart] = useState<ProductType[]>([]);
   const [similarProduct, setSimilarProduct] = useState<ProductType>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -45,9 +47,11 @@ export default function Cart() {
           const data = response.data;
           console.log("Similar products:", data);
           setSimilarProduct(data);
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+          setLoading(false);
         });
     }
   }, [cart]);
@@ -127,7 +131,11 @@ export default function Cart() {
         <div className="mt-[3vh]   flex flex-row justify-center flex-wrap ">
           <div className="flex flex-row">
             <div className=" flex flex-row  flex-wrap	mt-7 max-w-[63vw] ml-5">
-              {similarProduct && <Product product={similarProduct} />}
+              {loading ? (
+                <Loading />
+              ) : (
+                similarProduct && <Product product={similarProduct} />
+              )}
             </div>
           </div>
         </div>
