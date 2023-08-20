@@ -99,7 +99,7 @@ const ProductData: ProductDescription[] = [
   {
     item: "Oversized Tshirt",
     description:
-      "Embrace the art of laid-back chic with our Oversized Tshirt. It's not just a garment; it's a statement. The generous cut exudes a carefree vibe, while the fine fabric embraces you in comfort. With a versatile design, you can wear it as a dress or pair it with your favorite jeans for an effortlessly cool look that's as unique as you are.",
+      "Spacious cut, comfy fabric, versatile wear – dress or jeans, effortlessly cool and unique.",
   },
   {
     item: "High Rise Jeans",
